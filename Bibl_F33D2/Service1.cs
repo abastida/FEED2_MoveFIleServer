@@ -73,6 +73,7 @@ namespace Bibl_F33D2
                 }
             }
 
+
             return bandera_mover;
         }
     }

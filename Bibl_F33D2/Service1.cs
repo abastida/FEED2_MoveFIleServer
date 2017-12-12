@@ -76,6 +76,7 @@ namespace Bibl_F33D2
                     bandera_mover = ex.Message;
                     return ex.Message.ToString();
                     Log.EscribeLog("Error moviendo archivo " + ex.Message.ToString());
+
                 }
             }
 

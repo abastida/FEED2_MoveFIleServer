@@ -5,7 +5,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-
+using Bibl_F33D2.Extensions;
 
 
 
@@ -35,9 +35,11 @@ namespace Bibl_F33D2
                  } 
              } 
              catch (Exception exc) {
+                Log.EscribeLog("Error ValidateTokenSitio " + exc.Message.ToString());
             } 
-             return Valid; 
-         } 
+             return Valid;
+            Log.EscribeLog("ValidateTokenSitio " + Valid);
+        } 
 
 
           /// <summary> 
@@ -71,10 +73,12 @@ namespace Bibl_F33D2
                  finally 
                  { 
                      TDESAlgorithm.Clear(); 
-                     HashProvider.Clear(); 
-                 } 
+                     HashProvider.Clear();
+                    
+                } 
              } 
              catch (Exception e) {
+                Log.EscribeLog("Error Decrypt " + e.Message.ToString());
             } 
              return response;
         } 
@@ -94,8 +98,9 @@ namespace Bibl_F33D2
                      for (int i = 0; i<hex.Length; i = i + 2) 
                      { 
                          int value = Convert.ToInt32(hex.Substring(i, 2), 16); 
-                         cadena += (char) value; 
-                     } 
+                         cadena += (char) value;
+                        Log.EscribeLog("HexToString " +cadena);
+                    } 
                  } 
                  else 
                  { 
@@ -103,6 +108,7 @@ namespace Bibl_F33D2
                  } 
              } 
              catch (Exception e) {
+                Log.EscribeLog("Error HexToString " + e.Message.ToString());
             } 
              return cadena; 
          } 

@@ -42,12 +42,12 @@ namespace Bibl_F33D2
                 try
                 {
                     string path = ConfigurationManager.AppSettings["path_nuevo"].ToString() + @"\";
-                    if (!Directory.Exists(path))
+                    if (!Directory.Exists(path + request.vchpath))
                     {
                         try
                         {
                             // Crear directorio
-                            DirectoryInfo di = Directory.CreateDirectory(path);
+                            DirectoryInfo di = Directory.CreateDirectory(path + request.vchpath);
                             Log.EscribeLog("Se creo directorio");
                         }
 

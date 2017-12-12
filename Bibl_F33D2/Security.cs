@@ -36,9 +36,10 @@ namespace Bibl_F33D2
              } 
              catch (Exception exc) {
                 Log.EscribeLog("Error ValidateTokenSitio " + exc.Message.ToString());
-            } 
-             return Valid;
+            }
             Log.EscribeLog("ValidateTokenSitio " + Valid);
+            return Valid;
+           
         } 
 
 

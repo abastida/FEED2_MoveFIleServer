@@ -53,8 +53,8 @@ namespace Bibl_F33D2
 
                         catch (Exception ex)
                         {
-                            return ex.Message.ToString();
                             Log.EscribeLog("Error creando directorio " + ex.Message.ToString());
+                            return ex.Message.ToString();                            
                         }
                     }
 
@@ -74,13 +74,10 @@ namespace Bibl_F33D2
                 catch (Exception ex)
                 {
                     bandera_mover = ex.Message;
-                    return ex.Message.ToString();
                     Log.EscribeLog("Error moviendo archivo " + ex.Message.ToString());
-
+                    return ex.Message.ToString();                    
                 }
             }
-
-
             return bandera_mover;
         }
     }

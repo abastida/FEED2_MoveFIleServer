@@ -7,6 +7,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using System.Web;
+using Bibl_F33D2.Extensions;
 
 namespace Bibl_F33D2
 {
@@ -47,11 +48,13 @@ namespace Bibl_F33D2
                         {
                             // Crear directorio
                             DirectoryInfo di = Directory.CreateDirectory(path);
+                            Log.EscribeLog("Se creo directorio");
                         }
 
                         catch (Exception ex)
                         {
                             return ex.Message.ToString();
+                            Log.EscribeLog("Error creando directorio " + ex.Message.ToString());
                         }
                     }
 
@@ -64,12 +67,15 @@ namespace Bibl_F33D2
                     fs.Close();
                     fs.Dispose();
                     bandera_mover = "OK";
+                    Log.EscribeLog("Se movio archivo " + path + request.vchpath + request.vchfilename);
                 }
+
 
                 catch (Exception ex)
                 {
                     bandera_mover = ex.Message;
                     return ex.Message.ToString();
+                    Log.EscribeLog("Error moviendo archivo " + ex.Message.ToString());
                 }
             }
 

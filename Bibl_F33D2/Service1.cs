@@ -11,6 +11,8 @@ using Bibl_F33D2.Extensions;
 
 namespace Bibl_F33D2
 {
+    [ServiceBehavior(ConcurrencyMode=ConcurrencyMode.Multiple, InstanceContextMode = InstanceContextMode.PerCall)]
+    //[ServiceBehavior(InstanceContextMode=InstanceContextMode.PerCall)]
     // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de clase "Service1" en el código y en el archivo de configuración a la vez.
     public class Service1 : IService1
     {
@@ -67,7 +69,7 @@ namespace Bibl_F33D2
                     fs.Close();
                     fs.Dispose();
                     bandera_mover = "OK";
-                    Log.EscribeLog("Se movio archivo " + path + request.vchpath + request.vchfilename);
+                    Log.EscribeLog("Se movio archivo " + path + request.vchpath + request.vchfilename);                   
                 }
 
 
@@ -80,5 +82,36 @@ namespace Bibl_F33D2
             }
             return bandera_mover;
         }
+
+
+        //COmpresor zip
+        //private static void DecompressFileLZMA(string inFile, string outFile)
+        //{
+        //    try
+        //    {
+        //        SevenZip.Compression.LZMA.Decoder coder = new SevenZip.Compression.LZMA.Decoder();
+        //        FileStream input = new FileStream(inFile, FileMode.Open);
+        //        FileStream output = new FileStream(outFile, FileMode.Create);
+
+        //        // Read the decoder properties
+        //        byte[] properties = new byte[5];
+        //        input.Read(properties, 0, 5);
+
+        //        // Read in the decompress file size.
+        //        byte[] fileLengthBytes = new byte[8];
+        //        input.Read(fileLengthBytes, 0, 8);
+        //        long fileLength = BitConverter.ToInt64(fileLengthBytes, 0);
+
+        //        coder.SetDecoderProperties(properties);
+        //        coder.Code(input, output, input.Length, fileLength, null);
+        //        output.Flush();
+        //        output.Close();
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.Write("Existe en un  error: " + e.Message);
+        //    }
+        //}
+
     }
 }

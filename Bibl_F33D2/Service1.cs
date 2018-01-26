@@ -8,6 +8,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Web;
 using Bibl_F33D2.Extensions;
+using Bibl_F33D2.BD;
 
 namespace Bibl_F33D2
 {
@@ -16,6 +17,8 @@ namespace Bibl_F33D2
     // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de clase "Service1" en el código y en el archivo de configuración a la vez.
     public class Service1 : IService1
     {
+        public Napoleon_DataAcces NAP = new Napoleon_DataAcces();
+
         public string GetData(int value)
         {
             return string.Format("You entered: {0}", value);
@@ -62,12 +65,21 @@ namespace Bibl_F33D2
 
                     // Copiar y mover archivo
                     MemoryStream ms = new MemoryStream(request.bytArchivo);
-                    FileStream fs = new FileStream(path + request.vchpath + request.vchfilename, FileMode.Create);
+                    FileStream fs = new FileStream(path + request.vchpath + request.vchfilename.Replace(".dcm", ".7z") , FileMode.Create);
 
                     ms.WriteTo(fs);
+
+
                     ms.Close();
                     fs.Close();
                     fs.Dispose();
+                    tbl_MST_Archivos tbl_ = new tbl_MST_Archivos();
+
+                    tbl_.vchPathFile = path + request.vchpath + request.vchfilename.Replace(".dcm", ".7z");
+                    tbl_.id_Sitio = request.id_Sitio;
+
+                    NAP.set_Archivo(tbl_);
+
                     bandera_mover = "OK";
                     Log.EscribeLog("Se movio archivo " + path + request.vchpath + request.vchfilename);                   
                 }

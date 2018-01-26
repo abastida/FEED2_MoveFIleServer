@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NAPOLEONModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_MST_Archivos">
+          <Key>
+            <PropertyRef Name="intArchivoID" />
+          </Key>
+          <Property Name="intArchivoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Sitio" Type="int" />
+          <Property Name="vchPathFile" Type="varchar(max)" />
+          <Property Name="bitUnZip" Type="bit" />
+          <Property Name="datFecha" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="NAPOLEONModelStoreContainer">
+          <EntitySet Name="tbl_MST_Archivos" EntityType="Self.tbl_MST_Archivos" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NAPOLEONModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="NAPOLEONEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_MST_Archivos" EntityType="NAPOLEONModel.tbl_MST_Archivos" />
+        </EntityContainer>
+        <EntityType Name="tbl_MST_Archivos">
+          <Key>
+            <PropertyRef Name="intArchivoID" />
+          </Key>
+          <Property Name="intArchivoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Sitio" Type="Int32" />
+          <Property Name="vchPathFile" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="bitUnZip" Type="Boolean" />
+          <Property Name="datFecha" Type="DateTime" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NAPOLEONModelStoreContainer" CdmEntityContainer="NAPOLEONEntities">
+          <EntitySetMapping Name="tbl_MST_Archivos">
+            <EntityTypeMapping TypeName="NAPOLEONModel.tbl_MST_Archivos">
+              <MappingFragment StoreEntitySet="tbl_MST_Archivos">
+                <ScalarProperty Name="datFecha" ColumnName="datFecha" />
+                <ScalarProperty Name="bitUnZip" ColumnName="bitUnZip" />
+                <ScalarProperty Name="vchPathFile" ColumnName="vchPathFile" />
+                <ScalarProperty Name="id_Sitio" ColumnName="id_Sitio" />
+                <ScalarProperty Name="intArchivoID" ColumnName="intArchivoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
